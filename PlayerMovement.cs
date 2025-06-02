@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed = 10;
     [SerializeField] private float acceleration = 7;
     [SerializeField] private float deceleration = 7;
-    [SerializeField] private float velPower;
+    [SerializeField] private float velPower = 0.9;
     [Tooltip("Friction is applied to help slow the player down once they have let go of the movement buttons")]
     [SerializeField] private float frictionAmount = 0.2f;
 
@@ -92,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
         rb.AddForce(movement * Vector2.right);
-        //rb.linearVelocityX = horizontalInput * speed;
         #endregion
     }
 
