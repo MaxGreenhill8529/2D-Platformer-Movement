@@ -34,13 +34,14 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Disables/Enables coyote time")]
     [SerializeField] private bool coyoteTime = true;
 
-    private float defaultMaxSpeed;
     private float horizontalInput;
     private float coyoteTimeCounter;
 
     private void Awake()
     {
-        defaultMaxSpeed = maxSpeed;
+        rb = GetComponent<Rigidbody2D>();
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate; // Smooths out the movement
+        rb.freezeRotation = true;
     }
 
     // Update is called once per frame
@@ -98,10 +99,5 @@ public class PlayerMovement : MonoBehaviour
     {
         coyoteTimeCounter = 0;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-    }
-
-    public void SpeedChange(float value)
-    {
-        maxSpeed = value * defaultMaxSpeed;
     }
 }
