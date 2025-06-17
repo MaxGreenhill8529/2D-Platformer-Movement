@@ -30,9 +30,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private LayerMask groundLayer;
-    [Header("Debug / Testing Options")]
-    [Tooltip("Disables/Enables coyote time")]
-    [SerializeField] private bool coyoteTime = true;
+
+    private bool coyoteTime = true;
 
     private float horizontalInput;
     private float coyoteTimeCounter;
